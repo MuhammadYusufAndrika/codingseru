@@ -199,7 +199,7 @@
         }
     </style>
 </head>
-<body>
+<body id="body"> >
     <div class="galaxy-bg"></div>
     
     <!-- Floating elements -->
@@ -642,6 +642,24 @@
                 resizeTimeout = setTimeout(handleResize, 250);
             });
         });
+
+        window.addEventListener('DOMContentLoaded', () => {
+        const audio = new Audio('/assets/batassenja.mp3');
+        audio.volume = 0.2;
+
+        // Autoplay setelah user interaction fallback
+        const playAudio = () => {
+            audio.play().catch(e => {
+                console.log('Autoplay gagal. Menunggu interaksi pengguna...', e);
+            });
+        };
+
+        playAudio(); // coba langsung
+
+        // Jika gagal, jalankan setelah interaksi pertama
+        document.addEventListener('click', playAudio, { once: true });
+        document.addEventListener('keydown', playAudio, { once: true });
+    });
     </script>
 </body>
 </html>
