@@ -11,19 +11,30 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap');
         
+        * {
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+        }
+        
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
             color: white;
-            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
         }
         
         .galaxy-bg {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             z-index: -1;
             background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNwYXR0ZXJuKSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg==');
             opacity: 0.8;
@@ -60,6 +71,10 @@
             color: rgba(0,255,255,0.3);
             transform: rotate(-5deg);
             animation: codeFlow 10s linear infinite;
+            word-wrap: break-word;
+            max-width: 90vw;
+            white-space: nowrap;
+            overflow: hidden;
         }
         
         @keyframes codeFlow {
@@ -96,6 +111,12 @@
             box-shadow: 0 20px 25px -5px rgba(0, 255, 255, 0.2), 0 10px 10px -5px rgba(0, 255, 255, 0.1);
         }
         
+        @media (max-width: 768px) {
+            .card-hover:hover {
+                transform: translateY(-5px) scale(1.01);
+            }
+        }
+        
         .btn-pulse {
             animation: pulse 2s infinite;
         }
@@ -129,6 +150,53 @@
             opacity: 1;
             transform: translateY(0);
         }
+        
+        /* Mobile specific fixes */
+        @media (max-width: 768px) {
+            .text-5xl { font-size: 2.5rem; }
+            .text-7xl { font-size: 3rem; }
+            .text-2xl { font-size: 1.5rem; }
+            .text-3xl { font-size: 1.8rem; }
+            
+            .code-effect {
+                font-size: 8px !important;
+                max-width: 80vw;
+            }
+            
+            .star {
+                max-width: 3px;
+                max-height: 3px;
+            }
+            
+            .planet {
+                max-width: 80px;
+                max-height: 80px;
+            }
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        @media (min-width: 640px) {
+            .container { max-width: 640px; }
+        }
+        
+        @media (min-width: 768px) {
+            .container { max-width: 768px; }
+        }
+        
+        @media (min-width: 1024px) {
+            .container { max-width: 1024px; }
+        }
+        
+        @media (min-width: 1280px) {
+            .container { max-width: 1280px; }
+        }
     </style>
 </head>
 <body>
@@ -143,15 +211,15 @@
     <div class="container mx-auto px-4 py-12 max-w-6xl">
         <!-- Header -->
         <header class="text-center mb-16 relative z-10">
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 title-animate">
+            <h1 class="text-4xl md:text-7xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 title-animate">
                 Gaskeun Ngoding Seru!
             </h1>
-            <h2 id="subtitle" class="text-2xl md:text-3xl font-bold mb-8 text-cyan-300"></h2>
+            <h2 id="subtitle" class="text-lg md:text-3xl font-bold mb-8 text-cyan-300 px-2"></h2>
             
             <div class="relative inline-block">
                 <div class="absolute -inset-4 bg-cyan-500 rounded-full blur opacity-75 animate-pulse"></div>
                 <a href="http://s.amikom.ac.id/ngoding_seru" target="_blank">
-                    <button id="registerBtn" class="px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full text-white font-bold text-xl hover:from-purple-600 hover:to-pink-700 transition-all duration-300 transform hover:scale-105 btn-pulse">
+                    <button id="registerBtn" class="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full text-white font-bold text-lg md:text-xl hover:from-purple-600 hover:to-pink-700 transition-all duration-300 transform hover:scale-105 btn-pulse">
                         <i class="fas fa-user-plus mr-2"></i> DAFTAR SEKARANG
                     </button>
                 </a>
@@ -161,7 +229,7 @@
                 <div class="relative qr-float">
                     <div class="absolute -inset-2 bg-cyan-500 rounded-lg blur opacity-50"></div>
                     <div class="relative bg-white p-4 rounded-lg">
-                        <img src="/assets/qrcode.jpg" alt="QR Code" class="w-32 h-32">
+                        <img src="/assets/qrcode.jpg" alt="QR Code" class="w-24 h-24 md:w-32 md:h-32">
                         <p class="text-xs text-gray-800 mt-2">Scan untuk mendaftar</p>
                     </div>
                 </div>
@@ -170,21 +238,21 @@
         
         <!-- Event Info -->
         <section id="about" class="mb-20 section">
-            <div class="bg-gradient-to-br from-blue-900/50 to-purple-900/50 backdrop-blur-sm rounded-3xl p-8 border border-cyan-500/20 shadow-xl card-hover">
+            <div class="bg-gradient-to-br from-blue-900/50 to-purple-900/50 backdrop-blur-sm rounded-3xl p-6 md:p-8 border border-cyan-500/20 shadow-xl card-hover">
                 <div class="flex flex-col md:flex-row items-center">
-                    <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
-                        <h3 class="text-3xl font-bold mb-6 text-cyan-300 flex items-center">
+                    <div class="w-full md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                        <h3 class="text-2xl md:text-3xl font-bold mb-6 text-cyan-300 flex items-center justify-center md:justify-start">
                             <i class="fas fa-laptop-code text-cyan-400 mr-4 icon-bounce"></i>
-                            Apa Itu Kegiatan Ini?
+                            <span class="text-center md:text-left">Apa Itu Kegiatan Ini?</span>
                         </h3>
-                        <p class="text-lg leading-relaxed">
+                        <p class="text-base md:text-lg leading-relaxed text-center md:text-left">
                             Ngobrol santai sambil belajar ngoding dengan cara asyik dan praktis. Kamu akan diajak bikin game & multimedia keren tanpa ribet!
                         </p>
                     </div>
-                    <div class="md:w-1/2 flex justify-center">
+                    <div class="w-full md:w-1/2 flex justify-center">
                         <div class="relative">
                             <div class="absolute -inset-4 bg-cyan-500 rounded-full blur opacity-20"></div>
-                            <img src="/assets/hero.png" alt="Coding Illustration" class="relative w-64 h-64">
+                            <img src="/assets/hero.png" alt="Coding Illustration" class="relative w-48 h-48 md:w-64 md:h-64">
                         </div>
                     </div>
                 </div>
@@ -193,21 +261,21 @@
         
         <!-- Who Can Join -->
         <section id="participants" class="mb-20 section">
-            <div class="bg-gradient-to-br from-purple-900/50 to-indigo-900/50 backdrop-blur-sm rounded-3xl p-8 border border-purple-500/20 shadow-xl card-hover">
+            <div class="bg-gradient-to-br from-purple-900/50 to-indigo-900/50 backdrop-blur-sm rounded-3xl p-6 md:p-8 border border-purple-500/20 shadow-xl card-hover">
                 <div class="flex flex-col md:flex-row-reverse items-center">
-                    <div class="md:w-1/2 mb-8 md:mb-0 md:pl-8">
-                        <h3 class="text-3xl font-bold mb-6 text-purple-300 flex items-center">
+                    <div class="w-full md:w-1/2 mb-8 md:mb-0 md:pl-8">
+                        <h3 class="text-2xl md:text-3xl font-bold mb-6 text-purple-300 flex items-center justify-center md:justify-start">
                             <i class="fas fa-user-graduate text-purple-400 mr-4 icon-bounce" style="animation-delay: 0.2s;"></i>
-                            Siapa yang Bisa Ikut?
+                            <span class="text-center md:text-left">Siapa yang Bisa Ikut?</span>
                         </h3>
-                        <p class="text-lg leading-relaxed">
+                        <p class="text-base md:text-lg leading-relaxed text-center md:text-left">
                             Kegiatan ini khusus untuk siswa kelas X SIJA SMKN 2 Yogyakarta yang pengen belajar ngoding dengan cara seru dan menyenangkan!
                         </p>
                     </div>
-                    <div class="md:w-1/2 flex justify-center">
+                    <div class="w-full md:w-1/2 flex justify-center">
                         <div class="relative">
                             <div class="absolute -inset-4 bg-purple-500 rounded-full blur opacity-20"></div>
-                            <img src="/assets/logo.png" alt="Student Illustration" class="relative w-64 h-64">
+                            <img src="/assets/logo.png" alt="Student Illustration" class="relative w-48 h-48 md:w-64 md:h-64">
                         </div>
                     </div>
                 </div>
@@ -216,46 +284,46 @@
         
         <!-- Benefits -->
         <section id="benefits" class="mb-20 section">
-            <div class="bg-gradient-to-br from-indigo-900/50 to-blue-900/50 backdrop-blur-sm rounded-3xl p-8 border border-indigo-500/20 shadow-xl card-hover">
-                <h3 class="text-3xl font-bold mb-8 text-indigo-300 text-center">
+            <div class="bg-gradient-to-br from-indigo-900/50 to-blue-900/50 backdrop-blur-sm rounded-3xl p-6 md:p-8 border border-indigo-500/20 shadow-xl card-hover">
+                <h3 class="text-2xl md:text-3xl font-bold mb-8 text-indigo-300 text-center">
                     <i class="fas fa-gift text-indigo-400 mr-4 icon-bounce" style="animation-delay: 0.4s;"></i>
                     Apa yang Akan Kamu Dapatkan?
                 </h3>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-indigo-900/30 p-6 rounded-xl border border-indigo-500/30 hover:border-indigo-400 transition-all">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                    <div class="bg-indigo-900/30 p-4 md:p-6 rounded-xl border border-indigo-500/30 hover:border-indigo-400 transition-all">
                         <div class="flex items-center mb-4">
-                            <div class="bg-indigo-600 p-3 rounded-full mr-4">
-                                <i class="fas fa-code text-white"></i>
+                            <div class="bg-indigo-600 p-2 md:p-3 rounded-full mr-3 md:mr-4 flex-shrink-0">
+                                <i class="fas fa-code text-white text-sm md:text-base"></i>
                             </div>
-                            <h4 class="text-xl font-bold text-indigo-200">Belajar ngoding seru & gampang dipahami</h4>
+                            <h4 class="text-base md:text-xl font-bold text-indigo-200">Belajar ngoding seru & gampang dipahami</h4>
                         </div>
                     </div>
                     
-                    <div class="bg-indigo-900/30 p-6 rounded-xl border border-indigo-500/30 hover:border-indigo-400 transition-all">
+                    <div class="bg-indigo-900/30 p-4 md:p-6 rounded-xl border border-indigo-500/30 hover:border-indigo-400 transition-all">
                         <div class="flex items-center mb-4">
-                            <div class="bg-indigo-600 p-3 rounded-full mr-4">
-                                <i class="fas fa-gamepad text-white"></i>
+                            <div class="bg-indigo-600 p-2 md:p-3 rounded-full mr-3 md:mr-4 flex-shrink-0">
+                                <i class="fas fa-gamepad text-white text-sm md:text-base"></i>
                             </div>
-                            <h4 class="text-xl font-bold text-indigo-200">Bikin game & karya multimedia yang keren</h4>
+                            <h4 class="text-base md:text-xl font-bold text-indigo-200">Bikin game & karya multimedia yang keren</h4>
                         </div>
                     </div>
                     
-                    <div class="bg-indigo-900/30 p-6 rounded-xl border border-indigo-500/30 hover:border-indigo-400 transition-all">
+                    <div class="bg-indigo-900/30 p-4 md:p-6 rounded-xl border border-indigo-500/30 hover:border-indigo-400 transition-all">
                         <div class="flex items-center mb-4">
-                            <div class="bg-indigo-600 p-3 rounded-full mr-4">
-                                <i class="fas fa-chalkboard-teacher text-white"></i>
+                            <div class="bg-indigo-600 p-2 md:p-3 rounded-full mr-3 md:mr-4 flex-shrink-0">
+                                <i class="fas fa-chalkboard-teacher text-white text-sm md:text-base"></i>
                             </div>
-                            <h4 class="text-xl font-bold text-indigo-200">Dimentori langsung oleh praktisi kece</h4>
+                            <h4 class="text-base md:text-xl font-bold text-indigo-200">Dimentori langsung oleh praktisi kece</h4>
                         </div>
                     </div>
                     
-                    <div class="bg-indigo-900/30 p-6 rounded-xl border border-indigo-500/30 hover:border-indigo-400 transition-all">
+                    <div class="bg-indigo-900/30 p-4 md:p-6 rounded-xl border border-indigo-500/30 hover:border-indigo-400 transition-all">
                         <div class="flex items-center mb-4">
-                            <div class="bg-indigo-600 p-3 rounded-full mr-4">
-                                <i class="fas fa-trophy text-white"></i>
+                            <div class="bg-indigo-600 p-2 md:p-3 rounded-full mr-3 md:mr-4 flex-shrink-0">
+                                <i class="fas fa-trophy text-white text-sm md:text-base"></i>
                             </div>
-                            <h4 class="text-xl font-bold text-indigo-200">Dapat reward buat karya terbaikmu!</h4>
+                            <h4 class="text-base md:text-xl font-bold text-indigo-200">Dapat reward buat karya terbaikmu!</h4>
                         </div>
                     </div>
                 </div>
@@ -264,33 +332,33 @@
         
         <!-- Schedule -->
         <section id="schedule" class="mb-20 section">
-            <div class="bg-gradient-to-br from-blue-900/50 to-cyan-900/50 backdrop-blur-sm rounded-3xl p-8 border border-blue-500/20 shadow-xl card-hover">
+            <div class="bg-gradient-to-br from-blue-900/50 to-cyan-900/50 backdrop-blur-sm rounded-3xl p-6 md:p-8 border border-blue-500/20 shadow-xl card-hover">
                 <div class="flex flex-col md:flex-row items-center">
-                    <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
-                        <h3 class="text-3xl font-bold mb-6 text-blue-300 flex items-center">
+                    <div class="w-full md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                        <h3 class="text-2xl md:text-3xl font-bold mb-6 text-blue-300 flex items-center justify-center md:justify-start">
                             <i class="fas fa-calendar-alt text-blue-400 mr-4 icon-bounce" style="animation-delay: 0.6s;"></i>
-                            Kapan dan Di Mana?
+                            <span class="text-center md:text-left">Kapan dan Di Mana?</span>
                         </h3>
-                        <div class="space-y-4 text-lg">
-                            <p class="flex items-center">
-                                <i class="fas fa-map-marker-alt text-blue-300 mr-3"></i>
-                                <span>Lab. Komputer SIJA – SMK N 2 Yogyakarta</span>
+                        <div class="space-y-4 text-base md:text-lg">
+                            <p class="flex items-center justify-center md:justify-start">
+                                <i class="fas fa-map-marker-alt text-blue-300 mr-3 flex-shrink-0"></i>
+                                <span class="text-center md:text-left">Lab. Komputer SIJA – SMK N 2 Yogyakarta</span>
                             </p>
-                            <p class="flex items-center">
-                                <i class="fas fa-clock text-blue-300 mr-3"></i>
-                                <span>Kegiatan berlangsung selama ±5 hari</span>
+                            <p class="flex items-center justify-center md:justify-start">
+                                <i class="fas fa-clock text-blue-300 mr-3 flex-shrink-0"></i>
+                                <span class="text-center md:text-left">Kegiatan berlangsung selama ±5 hari</span>
                             </p>
-                            <p class="flex items-center">
-                                <i class="fas fa-calendar-day text-blue-300 mr-3"></i>
-                                <span>Dalam rentang waktu 2–13 Juni 2025</span>
+                            <p class="flex items-center justify-center md:justify-start">
+                                <i class="fas fa-calendar-day text-blue-300 mr-3 flex-shrink-0"></i>
+                                <span class="text-center md:text-left">Dalam rentang waktu 2–13 Juni 2025</span>
                             </p>
-                            <p class="text-sm opacity-80">(Jadwal detail akan diinformasikan kemudian)</p>
+                            <p class="text-sm opacity-80 text-center md:text-left">(Jadwal detail akan diinformasikan kemudian)</p>
                         </div>
                     </div>
-                    <div class="md:w-1/2 flex justify-center">
+                    <div class="w-full md:w-1/2 flex justify-center">
                         <div class="relative">
                             <div class="absolute -inset-4 bg-blue-500 rounded-full blur opacity-20"></div>
-                            <img src="/assets/tanggal.png" alt="Calendar Illustration" class="relative w-64 h-64">
+                            <img src="/assets/tanggal.png" alt="Calendar Illustration" class="relative w-48 h-48 md:w-64 md:h-64">
                         </div>
                     </div>
                 </div>
@@ -300,42 +368,41 @@
         <!-- CTA -->
         <section id="cta" class="mb-20 section">
             <div class="text-center">
-                <h3 class="text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+                <h3 class="text-3xl md:text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 px-4">
                     Yuk, Jangan Ketinggalan!
                 </h3>
-                <p class="text-xl mb-8 max-w-2xl mx-auto">
+                <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto px-4">
                     Buktikan kalau ngoding itu seru & mudah! Hubungi kami untuk info lebih lanjut:
                 </p>
                 
-                <div class="flex flex-col md:flex-row justify-center items-center gap-6">
-                    <div class="bg-cyan-900/30 p-6 rounded-xl border border-cyan-500/30">
-                        <div class="flex items-center">
-                            <i class="fas fa-phone-alt text-cyan-300 mr-3 text-2xl"></i>
-                            <div>
-                                <p class="font-bold text-cyan-200">+62-812-7195-8168</p>
-                                <p class="text-sm">(Mas Agung)</p>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-6 px-4">
+                    <div class="bg-cyan-900/30 p-4 md:p-6 rounded-xl border border-cyan-500/30 w-full max-w-sm">
+                        <div class="flex items-center justify-center">
+                            <i class="fas fa-phone-alt text-cyan-300 mr-3 text-xl md:text-2xl flex-shrink-0"></i>
+                            <div class="text-center md:text-left">
+                                <p class="font-bold text-cyan-200 text-sm md:text-base">+62-812-7195-8168</p>
+                                <p class="text-xs md:text-sm">(Mas Agung)</p>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="bg-cyan-900/30 p-6 rounded-xl border border-cyan-500/30">
-                        <div class="flex items-center">
-                            <i class="fas fa-user-tie text-cyan-300 mr-3 text-2xl"></i>
-                            <div>
-                                <p class="font-bold text-cyan-200">Pak Mochtar</p>
-                                <p class="text-sm">(Guru Pembimbing)</p>
+                    <div class="bg-cyan-900/30 p-4 md:p-6 rounded-xl border border-cyan-500/30 w-full max-w-sm">
+                        <div class="flex items-center justify-center">
+                            <i class="fas fa-user-tie text-cyan-300 mr-3 text-xl md:text-2xl flex-shrink-0"></i>
+                            <div class="text-center md:text-left">
+                                <p class="font-bold text-cyan-200 text-sm md:text-base">Pak Mochtar</p>
+                                <p class="text-xs md:text-sm">(Guru Pembimbing)</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="mt-12">
+                <div class="mt-12 px-4">
                     <a href="http://wa.me//+6281271958168">
-                        <button class="px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full text-white font-bold text-xl hover:from-purple-600 hover:to-pink-700 transition-all duration-300 transform hover:scale-105">
-                        <i class="fas fa-paper-plane mr-2"></i> KIRIM PESAN SEKARANG
-                    </button>
+                        <button class="px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full text-white font-bold text-lg md:text-xl hover:from-purple-600 hover:to-pink-700 transition-all duration-300 transform hover:scale-105">
+                            <i class="fas fa-paper-plane mr-2"></i> KIRIM PESAN SEKARANG
+                        </button>
                     </a>
-                    
                 </div>
             </div>
         </section>
@@ -344,21 +411,12 @@
     <!-- Footer -->
     <footer class="bg-black/20 py-8 border-t border-cyan-900/50">
         <div class="container mx-auto px-4 text-center">
-            <p class="text-cyan-300 mb-2">Gaskeun Ngoding Seru! - Event Coding SMKN 2 Yogyakarta</p>
-            <p class="text-sm text-cyan-500/80">© 2025 SIJA SMKN 2 Yogyakarta. All rights reserved.</p>
+            <p class="text-cyan-300 mb-2 text-sm md:text-base">Gaskeun Ngoding Seru! - Event Coding SMKN 2 Yogyakarta</p>
+            <p class="text-xs md:text-sm text-cyan-500/80">© 2025 SIJA SMKN 2 Yogyakarta. All rights reserved.</p>
             
             <div class="flex justify-center space-x-6 mt-6">
                 <a href="https://www.instagram.com/gaskeun_ngodingseru/" class="text-cyan-300 hover:text-white transition-colors">
-                    <i class="fab fa-instagram text-2xl"></i>
-                </a>
-                <!-- <a href="#" class="text-cyan-300 hover:text-white transition-colors">
-                    <i class="fab fa-twitter text-2xl"></i>
-                </a>
-                <a href="#" class="text-cyan-300 hover:text-white transition-colors">
-                    <i class="fab fa-facebook text-2xl"></i>
-                </a>
-                <a href="#" class="text-cyan-300 hover:text-white transition-colors">
-                    <i class="fab fa-youtube text-2xl"></i> -->
+                    <i class="fab fa-instagram text-xl md:text-2xl"></i>
                 </a>
             </div>
         </div>
@@ -368,12 +426,15 @@
         // Create stars
         function createStars() {
             const container = document.getElementById('stars-container');
-            for (let i = 0; i < 100; i++) {
+            const starCount = window.innerWidth < 768 ? 50 : 100; // Fewer stars on mobile
+            
+            for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
                 star.classList.add('star');
                 
-                // Random size between 1-3px
-                const size = Math.random() * 2 + 1;
+                // Random size between 1-3px (smaller on mobile)
+                const maxSize = window.innerWidth < 768 ? 2 : 3;
+                const size = Math.random() * maxSize + 1;
                 star.style.width = `${size}px`;
                 star.style.height = `${size}px`;
                 
@@ -391,12 +452,16 @@
         // Create planets
         function createPlanets() {
             const container = document.getElementById('planets-container');
-            for (let i = 0; i < 5; i++) {
+            const planetCount = window.innerWidth < 768 ? 3 : 5; // Fewer planets on mobile
+            
+            for (let i = 0; i < planetCount; i++) {
                 const planet = document.createElement('div');
                 planet.classList.add('planet');
                 
-                // Random size between 50-150px
-                const size = Math.random() * 100 + 50;
+                // Random size (smaller on mobile)
+                const maxSize = window.innerWidth < 768 ? 80 : 150;
+                const minSize = window.innerWidth < 768 ? 30 : 50;
+                const size = Math.random() * (maxSize - minSize) + minSize;
                 planet.style.width = `${size}px`;
                 planet.style.height = `${size}px`;
                 
@@ -415,14 +480,16 @@
         function createCodeEffects() {
             const container = document.getElementById('code-effects-container');
             const codeSnippets = [
-                "function hello() { console.log('Halo Dunia!'); }",
-                "const belajar = () => { return 'Ngoding Seru!'; }",
+                "function hello() { console.log('Halo!'); }",
+                "const belajar = () => 'Ngoding Seru!';",
                 "for(let i=0; i<10; i++) { console.log(i); }",
                 "class Game { constructor() { this.score = 0; } }",
-                "document.addEventListener('click', () => { alert('Keren!'); });"
+                "document.addEventListener('click', () => {});"
             ];
             
-            for (let i = 0; i < 8; i++) {
+            const effectCount = window.innerWidth < 768 ? 4 : 8; // Fewer effects on mobile
+            
+            for (let i = 0; i < effectCount; i++) {
                 const code = document.createElement('div');
                 code.classList.add('code-effect');
                 
@@ -432,8 +499,11 @@
                 // Random position
                 code.style.left = `${Math.random() * 90 + 5}%`;
                 
-                // Random font size
-                code.style.fontSize = `${Math.random() * 10 + 10}px`;
+                // Random font size (smaller on mobile)
+                const fontSize = window.innerWidth < 768 ? 
+                    Math.random() * 6 + 8 : 
+                    Math.random() * 10 + 10;
+                code.style.fontSize = `${fontSize}px`;
                 
                 // Random animation duration
                 code.style.animationDuration = `${Math.random() * 20 + 10}s`;
@@ -450,13 +520,27 @@
             // Clear the subtitle first
             subtitle.innerHTML = '';
             
-            // Create a span for each character
-            for (let i = 0; i < text.length; i++) {
-                const charSpan = document.createElement('span');
-                charSpan.textContent = text[i];
-                charSpan.style.animationDelay = `${i * 0.05}s`;
-                subtitle.appendChild(charSpan);
-            }
+            // Create a span for each character with word wrapping
+            const words = text.split(' ');
+            let charIndex = 0;
+            
+            words.forEach((word, wordIndex) => {
+                if (wordIndex > 0) {
+                    const spaceSpan = document.createElement('span');
+                    spaceSpan.textContent = ' ';
+                    spaceSpan.style.animationDelay = `${charIndex * 0.05}s`;
+                    subtitle.appendChild(spaceSpan);
+                    charIndex++;
+                }
+                
+                for (let i = 0; i < word.length; i++) {
+                    const charSpan = document.createElement('span');
+                    charSpan.textContent = word[i];
+                    charSpan.style.animationDelay = `${charIndex * 0.05}s`;
+                    subtitle.appendChild(charSpan);
+                    charIndex++;
+                }
+            });
         }
         
         // Intersection Observer for scroll animations
@@ -511,6 +595,19 @@
             });
         }
         
+        // Handle window resize
+        function handleResize() {
+            // Clear existing effects
+            document.getElementById('stars-container').innerHTML = '';
+            document.getElementById('planets-container').innerHTML = '';
+            document.getElementById('code-effects-container').innerHTML = '';
+            
+            // Recreate with new dimensions
+            createStars();
+            createPlanets();
+            createCodeEffects();
+        }
+        
         // Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
             createStars();
@@ -536,6 +633,13 @@
                 stagger: 0.2,
                 ease: "bounce.out",
                 delay: 1
+            });
+            
+            // Handle window resize with debounce
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(handleResize, 250);
             });
         });
     </script>
