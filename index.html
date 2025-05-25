@@ -585,7 +585,7 @@
                 
                 // Play sound if possible
                 if (typeof Audio !== 'undefined') {
-                    const clickSound = new Audio('data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU...');
+                    const clickSound = new Audio('/assets/batassenja.mp3');
                     clickSound.volume = 0.2;
                     clickSound.play().catch(e => console.log('Audio play failed:', e));
                 }
