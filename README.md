@@ -1,6 +1,6 @@
 # 🎉 CodingSeru — Belajar Ngoding Asyik Langsung di Browser!
 
-**CodingSeru** adalah situs web statis edukatif yang dirancang untuk memperkenalkan pemrograman web kepada pemula dengan cara yang interaktif, sederhana, dan menyenangkan. Website ini dibangun sepenuhnya menggunakan HTML, CSS, dan JavaScript vanilla — tanpa framework.
+**CodingSeru** adalah situs web statis edukatif yang dirancang untuk kegiatan memperkenalkan pemrograman web kepada pemula dengan cara yang interaktif, sederhana, dan menyenangkan. Website ini dibangun sepenuhnya menggunakan HTML, CSS, dan JavaScript vanilla — tanpa framework.
 
 ## 🌐 Live Preview
 
